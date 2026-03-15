@@ -1,1 +1,14 @@
-<p>books works!</p>
+<div id="theList" class="book-list-container">
+   <div *ngFor="let item of books; let i = index;" class="book-card row align-items-center">
+      <div class="col-2 book-field">{{ item.title }}</div>
+      <div class="col-2 book-field">{{ item.author }}</div>
+      <div class="col-2 book-field">{{ item.publishedDate }}</div>
+      <div class="col-2 book-field">{{ item.description }}</div>
+
+   </div> 
+
+</div>
+
+<div id="links" class="mt-4 text-center">
+   <button class="btn btn-sm btn-primary me-2" routerLink="/add">Add Book</button>
+</div>

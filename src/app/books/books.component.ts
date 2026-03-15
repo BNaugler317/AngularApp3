@@ -1,11 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {RouterModule } from '@angular/router';
+import { Book } from '../book';
+import { BookService } from '../book.service';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-books',
-  imports: [],
+  imports: [RouterModule, HttpClientModule, CommonModule],
+  providers: [BookService],
   templateUrl: './books.component.html',
   styleUrl: './books.component.css'
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit {
+
+  title = "book_sorting_app"
+  public books: Book[] = []
+  book: Book = { title: '', author: '', publishedDate: '', description: '' };
+
+  error = '';
+  success = '';
+
+  constructor(private bookService: BookService, private http: HttpClient) {
+
+  }
+
+  ngOnInit(): void {
+    this.getBooks();
+  }
+
+  getBooks(): void {
+    this.bookService.getAll().subscribe(
+      (data: Book[]) => {
+        this.books = data;
+        this.success = 'successful list retrieval';
+        console.log(this.success);
+        console.log(this.books);
+
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
 }
