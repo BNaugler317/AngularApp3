@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm" (ngSubmit)="addBook(f)">
+  <form #f="ngForm" (ngSubmit)="updateBook(f)">
     <!-- title -->
      <div class="form-group">
       <label>Title</label>
@@ -35,9 +35,10 @@
 
      <!-- Buttons -->
      <div class="form-group">
-      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Add Book</button>
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Update Book</button>
       <button class="btn btn-secondary" routerLink="/books">Cancel</button>
      </div>
 
   </form>
 </div>
+

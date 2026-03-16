@@ -1,3 +1,8 @@
+#theList {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
 .book-list-container {
   max-width: 1400px;
   margin: 40px auto;
@@ -17,14 +22,56 @@
  
 /* Each contact row styled like a card */
 .book-card {
-  background: #f9f9f9;
-  padding: 16px 8px;
-  margin-bottom: 12px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  transition: background 0.3s ease;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
 }
- 
+
+.book-top-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 20px;
+}
+
+.book-meta {
+  text-align: center;
+  min-width: 150px;
+}
+
+.book-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.book-value {
+  color: #555;
+}
+
+.book-description-section {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.book-description {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px;
+  max-width: 600px;
+  margin: 10px auto;
+  line-height: 1.5;
+}
+
+.book-actions {
+  margin-top: 15px;
+}
+
 .book-card:hover {
   background: #f1f1f1;
 }

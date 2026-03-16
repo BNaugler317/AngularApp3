@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RouterModule } from '@angular/router';
+import {RouterModule, Router } from '@angular/router';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { CommonModule } from '@angular/common';
@@ -21,7 +21,7 @@ export class BooksComponent implements OnInit {
   error = '';
   success = '';
 
-  constructor(private bookService: BookService, private http: HttpClient) {
+  constructor(private bookService: BookService, private http: HttpClient, private router: Router) {
 
   }
 
@@ -44,4 +44,20 @@ export class BooksComponent implements OnInit {
     );
   }
 
+  deleteBook(bookID: number): void {
+    this.bookService.deleteBook(bookID).subscribe({
+      next: () => {
+        this.getBooks();
+      },
+      error: (err) => {
+        console.error('Error deleting book:', err);
+      }
+    });
+  }
+
+ editBook(book: Book): void {
+  this.router.navigate(['/edit', book.bookID], {
+    state: { book: book }
+  });
+}
 }
