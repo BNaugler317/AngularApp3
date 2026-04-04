@@ -1,5 +1,11 @@
 <div *ngFor="let item of books" class="book-card">
 
+  <!-- book image at top of the app -->
+   <div class="book-image-container">
+    <img [src]="'http://localhost/AngularApp3API/uploads/' + item.imageName" 
+    alt="Book Cover" class="book-image" />
+   </div>
+
   <!-- TOP ROW -->
   <div class="book-top-row">
 

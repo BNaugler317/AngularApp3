@@ -33,6 +33,12 @@
       <textarea name="description" class="form-control" [(ngModel)]="book.description" rows="3" required></textarea>
      </div>
 
+     <!-- Upload Image -->
+     <div class="form-group">
+      <label>Upload Image</label>
+      <input type="file" name="imageName" class="form-control" (change)="onFileSelected($event)" />
+     </div>
+
      <!-- Buttons -->
      <div class="form-group">
       <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Add Book</button>

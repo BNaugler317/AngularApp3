@@ -16,8 +16,9 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class AddbooksComponent implements OnInit {
 
-  book: Book = { title: '', author: '', publishedDate: '', description: '' };
+  book: Book = { title: '', author: '', publishedDate: '', description: '', imageName: '' };
 
+  selectedFile: File | null = null;
   error = '';
   success = '';
 
@@ -37,9 +38,17 @@ export class AddbooksComponent implements OnInit {
   addBook(f: NgForm) {
     this.resetAlerts();
 
+    if (!this.book.imageName) {
+      this.book.imageName = 'placeholder.jpg';
+    }
+
     this.bookService.add(this.book).subscribe(
       (res: Book) => {
         this.success = 'Successfully created';
+
+        if (this.selectedFile && this.book.imageName != 'placeholder.jpg') {
+          this.uploadFile();
+        }
 
         f.reset();
         this.router.navigate(['/books']);
@@ -53,6 +62,29 @@ export class AddbooksComponent implements OnInit {
   resetAlerts(): void {
     this.error = '';
     this.success = '';
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+      this.book.imageName = this.selectedFile.name;
+    }
+  }
+
+  uploadFile(): void {
+    if (!this.selectedFile) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', this.selectedFile);
+
+    this.http.post('http://localhost/AngularApp3API/upload', formData).subscribe(
+      response => console.log('File uploaded successfully', response),
+      error => console.error('file upload failed', error)
+    );
+
   }
 
 

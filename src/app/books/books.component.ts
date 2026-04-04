@@ -16,7 +16,7 @@ export class BooksComponent implements OnInit {
 
   title = "book_sorting_app"
   public books: Book[] = []
-  book: Book = { title: '', author: '', publishedDate: '', description: '' };
+  book: Book = { title: '', author: '', publishedDate: '', description: '', imageName: '' };
 
   error = '';
   success = '';

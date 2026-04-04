@@ -107,3 +107,16 @@
   background-color: #f2f2f2;
   border-bottom: 1px solid #ccc;
 }
+
+.book-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.book-image {
+  width: 120px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
