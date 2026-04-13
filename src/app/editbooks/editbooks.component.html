@@ -1,4 +1,10 @@
 <div class="container">
+
+    <div class="toolbar">
+        <h2>{{ userName }}'s Book List</h2>
+        <button (click)="authService.logout()" class="btn btn-sm btn-danger">Logout</button>
+    </div>
+
   <form #f="ngForm" (ngSubmit)="updateBook(f)">
     <!-- title -->
      <div class="form-group">

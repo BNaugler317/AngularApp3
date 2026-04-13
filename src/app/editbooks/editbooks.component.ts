@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Book } from '../book';
 import { BookService } from '../book.service';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-editbooks',
@@ -25,16 +26,20 @@ export class EditbooksComponent implements OnInit {
 
   error = '';
   success = '';
+  userName: string = '';
 
-  constructor( private bookService: BookService, private router: Router) {}
+  constructor( private bookService: BookService, private router: Router, public authService: Auth) {}
 
   ngOnInit(): void {
+    
     if (history.state.book) {
       this.book = history.state.book;
     } else {
       this.error = 'No book data found.';
       this.router.navigate(['/books']);
     }
+
+    this.userName = localStorage.getItem('username') || 'Guest';
   }
 
   updateBook(form: NgForm): void {

@@ -1,3 +1,8 @@
+<div class="toolbar">
+    <h2>{{ userName }}'s Book List</h2>
+    <button (click)="authService.logout()" class="btn btn-sm btn-danger">Logout</button>
+  </div>
+
 <div *ngFor="let item of books" class="book-card">
 
   <!-- book image at top of the app -->

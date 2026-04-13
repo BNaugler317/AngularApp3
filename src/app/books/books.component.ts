@@ -4,6 +4,7 @@ import { Book } from '../book';
 import { BookService } from '../book.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-books',
@@ -20,12 +21,14 @@ export class BooksComponent implements OnInit {
 
   error = '';
   success = '';
+  userName: string = '';
 
-  constructor(private bookService: BookService, private http: HttpClient, private router: Router) {
+  constructor(private bookService: BookService, private http: HttpClient, private router: Router, public authService: Auth) {
 
   }
 
   ngOnInit(): void {
+    this.userName = localStorage.getItem('username') || 'Guest';
     this.getBooks();
   }
 

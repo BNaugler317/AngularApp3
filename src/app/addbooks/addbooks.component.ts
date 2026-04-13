@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { RouterModule, Router } from '@angular/router';
+import { Auth } from '../services/auth';
 
 
 @Component({
@@ -21,18 +22,20 @@ export class AddbooksComponent implements OnInit {
   selectedFile: File | null = null;
   error = '';
   success = '';
+  userName: string = '';
 
   constructor(
     private bookService: BookService,
     private http: HttpClient,
-    private router: Router
+    private router: Router, 
+    public authService: Auth
   )
   {
 
   }
 
   ngOnInit(): void {
-
+    this.userName = localStorage.getItem('username') || 'Guest';
   }
 
   addBook(f: NgForm) {
